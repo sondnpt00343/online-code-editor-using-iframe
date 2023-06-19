@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>F8 Iframe</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                height: 100vh;
+                background: #ebebeb;
+            }
+
+            .container {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                column-gap: 20px;
+                padding: 24px;
+                height: 100%;
+            }
+
+            .editor {
+                padding: 16px;
+                outline: none;
+            }
+
+            .editor,
+            .browser {
+                border-radius: 8px;
+                border: 2px solid #ccc;
+                background: #fff;
+            }
+
+            .browser {
+                width: 100%;
+                height: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <!-- Code editor -->
+            <textarea
+                name=""
+                id="editor"
+                cols="30"
+                rows="10"
+                class="editor"
+                placeholder="Code..."
+            ></textarea>
+
+            <!-- Browser -->
+            <div>
+                <iframe
+                    src=""
+                    frameborder="0"
+                    id="browser"
+                    class="browser"
+                ></iframe>
+            </div>
+        </div>
+
+        <script>
+            const editor = document.querySelector("#editor");
+            const browser = document.querySelector("#browser");
+
+            editor.oninput = function (e) {
+                browser.srcdoc = e.target.value;
+            };
+        </script>
+    </body>
+</html>
